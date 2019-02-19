@@ -57,6 +57,6 @@ public class UserShop implements Serializable {
     /**
      * 记录产生时间
      */
-    @QuerySqlField
+    @QuerySqlField(index = true)
     private String time;
 }
