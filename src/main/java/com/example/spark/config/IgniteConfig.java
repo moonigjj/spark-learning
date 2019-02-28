@@ -11,7 +11,10 @@ import org.apache.ignite.IgniteAtomicSequence;
 import org.apache.ignite.Ignition;
 import org.apache.ignite.cache.CacheAtomicityMode;
 import org.apache.ignite.configuration.CacheConfiguration;
+import org.apache.ignite.configuration.DataRegionConfiguration;
+import org.apache.ignite.configuration.DataStorageConfiguration;
 import org.apache.ignite.configuration.IgniteConfiguration;
+import org.apache.ignite.configuration.WALMode;
 import org.apache.ignite.logger.slf4j.Slf4jLogger;
 import org.apache.ignite.springdata.repository.config.EnableIgniteRepositories;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -35,14 +38,22 @@ public class IgniteConfig {
         IgniteConfiguration cfg = new IgniteConfiguration();
         cfg.setIgniteInstanceName("sparkDataNode");
         cfg.setPeerClassLoadingEnabled(true);
-        cfg.setClientMode(true);
 
         Slf4jLogger gridLog = new Slf4jLogger();
         cfg.setGridLogger(gridLog);
-        /*// 持久化
+        // 持久化
         DataStorageConfiguration dataStorageConfiguration = new DataStorageConfiguration();
-        dataStorageConfiguration.getDefaultDataRegionConfiguration().setPersistenceEnabled(true);
-        cfg.setDataStorageConfiguration(dataStorageConfiguration);*/
+
+
+        DataRegionConfiguration regionConfiguration = new DataRegionConfiguration();
+        regionConfiguration.setPersistenceEnabled(true);
+
+        dataStorageConfiguration.setDefaultDataRegionConfiguration(regionConfiguration);
+        // Set WAL Mode
+        dataStorageConfiguration.setWalMode(WALMode.LOG_ONLY);
+        dataStorageConfiguration.setWalCompactionEnabled(true);
+        dataStorageConfiguration.setWalCompactionLevel(9);
+        cfg.setDataStorageConfiguration(dataStorageConfiguration);
         // 数据缓存
         CacheConfiguration<Long, UserShop> userShops = new CacheConfiguration<>();
         userShops.setName(CacheName.USER_SHOP);
@@ -51,6 +62,7 @@ public class IgniteConfig {
         cfg.setCacheConfiguration(userShops);
 
         Ignite ignite = Ignition.start(cfg);
+        ignite.cluster().active(true);
         return ignite;
     }
 
