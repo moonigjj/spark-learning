@@ -3,6 +3,7 @@ package com.example.spark;
 import com.example.spark.common.CacheName;
 import com.example.spark.model.UserShop;
 import com.example.spark.repository.UserRepository;
+import com.example.spark.service.SparkSqlService;
 
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;
@@ -22,10 +23,19 @@ public class SparkApplicationTests {
 	@Autowired
 	private UserRepository repository;
 
+	@Autowired
+	private SparkSqlService sqlService;
+
 	@Test
 	public void contextLoads() {
 
-		this.repository.count();
+		UserShop userShop = this.repository.findById(10L).get();
+		System.out.println("userShop: " + userShop);
+	}
+
+	@Test
+	public void sparkSql() {
+		sqlService.process();
 	}
 
 	@Test

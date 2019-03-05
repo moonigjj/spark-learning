@@ -16,6 +16,7 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -24,9 +25,9 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-
+@NoArgsConstructor
 @Entity
-@Table(name = "user_table")
+@Table(name = "user_test")
 public class UserShop implements Serializable {
     private static final long serialVersionUID = -8980291001106698088L;
 

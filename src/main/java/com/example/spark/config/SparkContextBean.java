@@ -3,13 +3,13 @@
  */
 package com.example.spark.config;
 
-import org.apache.spark.SparkConf;
-import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.spark.sql.SparkSession;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 
 import lombok.Data;
 
@@ -29,24 +29,18 @@ public class SparkContextBean {
 
     private String master = "local";
 
-    @Bean("sparkConf")
-    @ConditionalOnMissingBean(SparkConf.class)
-    public SparkConf sparkConf() {
+    @Bean("sparkSession")
+    @ConditionalOnMissingBean(SparkSession.class)
+    public SparkSession sparkSession() {
 
-        SparkConf conf = new SparkConf()
-                .setAppName(appName)
-                .set("spark.driver.allowMultipleContexts", "true")
-                .setMaster(master);
-        return conf;
-    }
+        Logger.getRootLogger().setLevel(Level.WARN);
 
-    @Bean
-    @ConditionalOnMissingBean(JavaSparkContext.class)
-    @DependsOn("sparkConf")
-    public JavaSparkContext javaSparkContext() {
-
-        JavaSparkContext javaSparkContext = new JavaSparkContext(sparkConf());
-        return javaSparkContext;
+        SparkSession sparkSession = SparkSession.builder()
+                .appName(appName)
+                .config("spark.driver.allowMultipleContexts", "true")
+                .master(master)
+                .getOrCreate();
+        return sparkSession;
     }
 
 }
