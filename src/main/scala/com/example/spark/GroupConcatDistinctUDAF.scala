@@ -33,7 +33,7 @@ class GroupConcatDistinctUDAF extends UserDefinedAggregateFunction{
     */
   override def update(buffer: MutableAggregationBuffer, input: Row): Unit = {
     // 缓冲中的已经拼接过的城市信息串
-    var bufferCityInfo = buffer.getString(0)
+    val bufferCityInfo = buffer.getString(0)
 
     // 刚刚传进来的某个城市信息
     val cityInfo = input.getString(0)

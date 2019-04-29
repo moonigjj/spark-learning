@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @version $Id: UserShopController.java, v 0.1 2019-01-07 14:21 tangyue Exp $$
  */
 @RestController
-@RequestMapping(value = "/user/shop/add")
+@RequestMapping(value = "/user/shop")
 public class UserShopController {
 
 
