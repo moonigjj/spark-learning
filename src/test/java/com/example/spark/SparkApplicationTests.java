@@ -1,8 +1,8 @@
 package com.example.spark;
 
-import com.example.spark.common.CacheName;
-import com.example.spark.model.UserShop;
-import com.example.spark.repository.UserRepository;
+import com.example.web.common.CacheName;
+import com.example.web.model.UserShop;
+import com.example.web.repository.UserRepository;
 import com.example.spark.service.SparkSqlService;
 
 import org.apache.ignite.Ignite;

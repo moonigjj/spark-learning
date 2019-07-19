@@ -1,9 +1,9 @@
 /**
  * chenxitech.cn Inc. Copyright (c) 2017-2019 All Rights Reserved.
  */
-package com.example.spark.web;
+package com.example.web;
 
-import com.example.spark.common.CacheName;
+import com.example.web.common.CacheName;
 
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;

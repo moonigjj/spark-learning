@@ -3,14 +3,17 @@
  */
 package com.example.spark.service;
 
-import com.example.spark.model.UserShop;
-import com.example.spark.repository.UserRepository;
+import com.example.web.model.UserShop;
+import com.example.web.repository.UserRepository;
 
 import org.apache.ignite.Ignite;
+import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.SparkSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  *
@@ -36,9 +39,15 @@ public class SparkSqlService {
 
     public void process() {
 
-       Dataset dataset = sparkSession.createDataFrame(userRepository.findAll(), UserShop.class);
-       dataset.show(10);
-       stop();
+
+        List<UserShop> list = this.userRepository.findAll();
+        JavaSparkContext context = new JavaSparkContext(sparkSession.sparkContext());
+
+        stop();
+    }
+
+    /*利用插入排序的思想，适用于那些组内数据量大，但所取top数量较小时*/
+    private void groupByTopN(Dataset dataset, final int n) {
     }
 
 }

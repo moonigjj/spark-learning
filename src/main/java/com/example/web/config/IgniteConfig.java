@@ -1,10 +1,10 @@
 /**
  * chenxitech.cn Inc. Copyright (c) 2017-2019 All Rights Reserved.
  */
-package com.example.spark.config;
+package com.example.web.config;
 
-import com.example.spark.common.CacheName;
-import com.example.spark.model.UserShop;
+import com.example.web.common.CacheName;
+import com.example.web.model.UserShop;
 
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteAtomicSequence;

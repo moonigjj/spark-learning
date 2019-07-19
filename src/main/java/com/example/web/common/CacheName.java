@@ -1,7 +1,7 @@
 /**
  * chenxitech.cn Inc. Copyright (c) 2017-2019 All Rights Reserved.
  */
-package com.example.spark.common;
+package com.example.web.common;
 
 /**
  *

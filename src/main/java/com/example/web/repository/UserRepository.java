@@ -1,9 +1,9 @@
 /**
  * chenxitech.cn Inc. Copyright (c) 2017-2019 All Rights Reserved.
  */
-package com.example.spark.repository;
+package com.example.web.repository;
 
-import com.example.spark.model.UserShop;
+import com.example.web.model.UserShop;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

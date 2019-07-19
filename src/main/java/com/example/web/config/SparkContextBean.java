@@ -1,7 +1,7 @@
 /**
  * chenxitech.cn Inc. Copyright (c) 2017-2019 All Rights Reserved.
  */
-package com.example.spark.config;
+package com.example.web.config;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;

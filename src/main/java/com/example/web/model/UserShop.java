@@ -1,7 +1,7 @@
 /**
  * chenxitech.cn Inc. Copyright (c) 2017-2019 All Rights Reserved.
  */
-package com.example.spark.model;
+package com.example.web.model;
 
 import org.apache.ignite.cache.query.annotations.QuerySqlField;
 
@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "user_test")
-public class UserShop implements Serializable {
+public class UserShop implements SupportConverter {
     private static final long serialVersionUID = -8980291001106698088L;
 
     /**
