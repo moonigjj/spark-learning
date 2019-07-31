@@ -4,17 +4,21 @@
 package com.example.web.config;
 
 import com.example.web.convert.PropertiesHttpMessageConverter;
+import com.example.web.interceptor.ValidationInterceptor;
 import com.example.web.processor.MyMapProcessor;
 import com.example.web.resolver.MyModelAndViewResolver;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.method.annotation.MapMethodProcessor;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
@@ -34,6 +38,21 @@ public class WebMvcConfig extends WebMvcConfigurationSupport implements Initiali
 
     @Autowired
     private RequestMappingHandlerAdapter requestMappingHandlerAdapter;
+
+    /*@Bean 自己配置校验器的工厂  自己随意定制化哦~
+    public LocalValidatorFactoryBean localValidatorFactoryBean() {
+        return new LocalValidatorFactoryBean();
+    }*/
+
+    @Bean
+    public ValidationInterceptor validationInterceptor() {
+        return new ValidationInterceptor();
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(validationInterceptor()).addPathPatterns("/**");
+    }
 
     // 设置异步请求超时时间
     @Override
