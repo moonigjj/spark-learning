@@ -20,8 +20,9 @@
 		<java.version>1.8</java.version>
 		<spark.version>2.4.0</spark.version>
 		<scala.version>2.12</scala.version>
-		<flink.version>1.7.0</flink.version>
+		<flink.version>1.8.0</flink.version>
 		<ignite.version>2.7.0</ignite.version>
+		<elastic.version>7.3.0</elastic.version>
 	</properties>
 
 	<profiles>
@@ -162,10 +163,15 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-table_${scala.version}</artifactId>
-			<version>${flink.version}</version>
-			<scope>provided</scope>
+			<groupId>org.elasticsearch</groupId>
+			<artifactId>elasticsearch</artifactId>
+			<version>${elastic.version}</version>
+		</dependency>
+		<!-- Dependency for Elasticsearch 6.x REST Client -->
+		<dependency>
+			<groupId>org.elasticsearch.client</groupId>
+			<artifactId>elasticsearch-rest-high-level-client</artifactId>
+			<version>${elastic.version}</version>
 		</dependency>
 
 		<dependency>
@@ -226,6 +232,12 @@
 		</dependency>
 
 
+		<!-- 随机数据生成 -->
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
 		<!-- 解决jdk1.8  spark-java.lang.ArrayIndexOutOfBoundsException: 10582异常-->
 		<dependency>

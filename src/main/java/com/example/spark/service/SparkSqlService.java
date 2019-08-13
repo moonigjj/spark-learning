@@ -3,7 +3,6 @@
  */
 package com.example.spark.service;
 
-import com.example.web.model.UserShop;
 import com.example.web.repository.UserRepository;
 
 import org.apache.ignite.Ignite;
@@ -12,8 +11,6 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.SparkSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  *
@@ -40,8 +37,8 @@ public class SparkSqlService {
     public void process() {
 
 
-        List<UserShop> list = this.userRepository.findAll();
         JavaSparkContext context = new JavaSparkContext(sparkSession.sparkContext());
+        context.parallelize(this.userRepository.findAll());
 
         stop();
     }
