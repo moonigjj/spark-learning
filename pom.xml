@@ -23,6 +23,7 @@
 		<flink.version>1.8.0</flink.version>
 		<ignite.version>2.7.0</ignite.version>
 		<elastic.version>7.3.0</elastic.version>
+		<corenlp.version>3.9.2</corenlp.version>
 	</properties>
 
 	<profiles>
@@ -74,6 +75,20 @@
 	</profiles>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>edu.stanford.nlp</groupId>
+			<artifactId>stanford-corenlp</artifactId>
+			<version>${corenlp.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>edu.stanford.nlp</groupId>
+			<artifactId>stanford-corenlp</artifactId>
+			<version>${corenlp.version}</version>
+			<classifier>models</classifier>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
