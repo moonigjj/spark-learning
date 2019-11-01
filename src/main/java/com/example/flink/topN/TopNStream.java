@@ -138,7 +138,7 @@ public class TopNStream {
                 TimeWindow window,  // 窗口
                 Iterable<Long> aggregateResult, // 聚合函数的结果，即 count 值
                 Collector<ItemViewCount> collector  // 输出类型为 ItemViewCount
-        ) throws Exception {
+        ) {
             Long itemId = ((Tuple1<Long>) key).f0;
             Long count = aggregateResult.iterator().next();
             collector.collect(ItemViewCount.of(itemId, window.getEnd(), count));

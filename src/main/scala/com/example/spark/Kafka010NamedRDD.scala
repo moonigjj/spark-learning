@@ -1,3 +1,4 @@
+/*
 package com.example.spark
 
 import java.time.Duration
@@ -102,3 +103,4 @@ object Kafka010NamedRDD {
     map
   }
 }
+*/
