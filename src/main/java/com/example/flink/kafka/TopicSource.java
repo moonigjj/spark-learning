@@ -3,6 +3,8 @@
  */
 package com.example.flink.kafka;
 
+import java.io.Serializable;
+
 import lombok.Data;
 
 /**
@@ -11,7 +13,9 @@ import lombok.Data;
  * @version $Id: TopicSource.java, v 0.1 2019-10-31 15:47 tangyue Exp $$
  */
 @Data
-public class TopicSource {
+public class TopicSource implements Serializable {
+
+    private static final long serialVersionUID = -2766334999945298398L;
 
     private long time;
 
