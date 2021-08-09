@@ -22,7 +22,7 @@
 		<scala.version>2.12</scala.version>
 		<flink.version>1.8.0</flink.version>
 		<ignite.version>2.7.0</ignite.version>
-		<elastic.version>7.3.0</elastic.version>
+		<elastic.version>7.13.3</elastic.version>
 		<corenlp.version>3.9.2</corenlp.version>
 	</properties>
 
