@@ -23,7 +23,7 @@
 		<flink.version>1.8.0</flink.version>
 		<ignite.version>2.7.0</ignite.version>
 		<elastic.version>7.3.0</elastic.version>
-		<corenlp.version>3.9.2</corenlp.version>
+		<corenlp.version>4.4.0</corenlp.version>
 	</properties>
 
 	<profiles>
